@@ -1,0 +1,1589 @@
+<!DOCTYPE html>
+<html lang="pt-br" class="js">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clube do Advogado Tributarista | Éderson Porto</title>
+    <meta name="description"
+        content="O programa de implementação que reúne tudo que separa o profissional tecnicamente competente do profissional reconhecido e preparado para o novo cenário da reforma.">
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Inter:wght@400;500;600;700;800&display=swap');
+
+        :root {
+            --white: #ffffff;
+            --sand: #111827;
+            --ink: #d0d8e4;
+            --dark: #0d1117;
+            --gold: #c9a84c;
+            --gold-bright: #e8c96a;
+            --gold-dark: #b8922a;
+            --muted: #b0bac8;
+            --light: #ffffff;
+            --bg: #0d1117;
+            --surface: #1a2332;
+            --border: rgba(201, 168, 76, 0.15);
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            margin: 0;
+            background: var(--bg);
+            color: var(--ink);
+            font-family: 'Inter', sans-serif;
+            overflow-x: hidden;
+        }
+
+        h1,
+        h2,
+        h3,
+        p {
+            margin-top: 0;
+        }
+
+        .wrap {
+            width: min(1120px, calc(100% - 40px));
+            margin: auto;
+        }
+
+        /* Kicker */
+        .kicker {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--gold-bright);
+            font-size: 11px;
+            font-weight: 800;
+            letter-spacing: .2em;
+            text-transform: uppercase;
+            border: 1px solid rgba(201, 168, 76, 0.3);
+            background: rgba(201, 168, 76, 0.1);
+            padding: 9px 18px;
+            border-radius: 999px;
+            width: fit-content;
+            backdrop-filter: blur(6px);
+        }
+
+        .section-title .kicker {
+            margin: 0 auto 16px;
+        }
+
+        /* CTA */
+        .cta {
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px 34px;
+            border-radius: 999px;
+            background: linear-gradient(135deg, var(--gold-bright), var(--gold-dark));
+            color: #111;
+            text-decoration: none;
+            font-weight: 800;
+            font-size: 15px;
+            box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.2), 0 0 44px rgba(201, 168, 76, 0.3), 0 14px 34px rgba(0, 0, 0, .4);
+            transition: .2s;
+            text-align: center;
+        }
+
+        .cta:hover {
+            transform: translateY(-2px);
+            background: linear-gradient(135deg, #f0d060, #b8922a);
+            box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.3), 0 0 60px rgba(232, 201, 106, 0.4), 0 14px 34px rgba(0, 0, 0, .4);
+        }
+
+        .note {
+            font-size: 12px;
+            color: var(--muted);
+            margin: 14px 0 0;
+        }
+
+        /* Typography */
+        h1,
+        h2,
+        h3 {
+            font-family: 'Be Vietnam Pro', sans-serif !important;
+            letter-spacing: -0.02em;
+        }
+
+        /* Hero */
+        .hero {
+            position: relative;
+            overflow: hidden;
+            padding: 72px 0 64px;
+            background: #0d1117 url('https://edersonporto.com/wp-content/uploads/2024/10/TESTE-2.png') no-repeat center bottom;
+            background-size: cover;
+            min-height: 90vh;
+            display: flex;
+            align-items: center;
+        }
+
+        .hero::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            z-index: 0;
+            pointer-events: none;
+            background: linear-gradient(90deg, rgba(5, 7, 10, .92) 0%, rgba(5, 7, 10, .74) 36%, rgba(5, 7, 10, .12) 68%, transparent 100%);
+        }
+
+        .hero::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            z-index: 1;
+            background-image: linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+            background-size: 64px 64px;
+            -webkit-mask-image: radial-gradient(900px 560px at 72% 18%, #000 20%, transparent 78%);
+            mask-image: radial-gradient(900px 560px at 72% 18%, #000 20%, transparent 78%);
+        }
+
+        .hero .wrap {
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-content {
+            max-width: 1120px;
+        }
+
+        .hero-content>h1,
+        .hero-content>.lead {
+            max-width: 620px;
+        }
+
+        .hero h1 {
+            font: 700 clamp(42px, 5.5vw, 68px)/1.05 'Be Vietnam Pro', sans-serif !important;
+            letter-spacing: -0.04em;
+            margin: 22px 0 26px;
+            background: linear-gradient(115deg, #ffffff 35%, var(--gold-bright) 78%, var(--gold));
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero .lead {
+            font-size: 20px;
+            line-height: 1.55;
+            font-weight: 600;
+            color: var(--ink);
+            max-width: 620px;
+        }
+
+        .hero .sub {
+            font-size: 16px;
+            line-height: 1.75;
+            color: var(--muted);
+            max-width: 610px;
+            margin-bottom: 32px;
+        }
+
+        .about-photo {
+            position: relative;
+        }
+
+        .about-photo:after {
+            content: "";
+            position: absolute;
+            background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+            border-radius: 7px;
+            inset: 18px -16px -16px 18px;
+        }
+
+        .about-photo img {
+            position: relative;
+            z-index: 1;
+            display: block;
+            width: 100%;
+            object-fit: cover;
+            border-radius: 7px;
+            box-shadow: 0 24px 60px rgba(0, 0, 0, .55);
+        }
+
+        .about-photo img {
+            aspect-ratio: 4/5;
+            object-position: center 35%;
+        }
+
+        /* Sections */
+        .section {
+            padding: 100px 0;
+            color: white !important;
+        }
+
+        .sand {
+            background: var(--sand);
+        }
+
+        .dark {
+            padding: 105px 0;
+            background: radial-gradient(900px 520px at 50% 0%, rgba(201, 168, 76, 0.1), transparent 62%), var(--dark);
+            color: var(--light);
+        }
+
+        .section-title {
+            max-width: 820px;
+            margin: 0 auto 52px;
+            text-align: center;
+        }
+
+        .section-title h2 {
+            font: 600 clamp(34px, 4.5vw, 48px)/1.1 'Be Vietnam Pro', sans-serif;
+            margin: 14px 0 18px;
+        }
+
+        .section-title p {
+            color: var(--muted);
+            font-size: 17px;
+            line-height: 1.75;
+        }
+
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 22px;
+        }
+
+        /* Cards & Elements */
+        .card,
+        .check,
+        .included div,
+        .faq details,
+        .method-card {
+            padding: 28px;
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(8px);
+        }
+
+        .card h3 {
+            font: 600 22px/1.2 'Be Vietnam Pro', sans-serif;
+            margin-bottom: 10px;
+            color: var(--gold-bright);
+        }
+
+        .card p {
+            color: var(--muted);
+            font-size: 15px;
+            line-height: 1.7;
+            margin-bottom: 0;
+        }
+
+        /* Checks List */
+        .checks {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 15px;
+            max-width: 800px;
+            margin: auto;
+        }
+
+        .check {
+            display: flex;
+            gap: 15px;
+            padding: 22px;
+            font-size: 15px;
+            line-height: 1.6;
+            align-items: center;
+        }
+
+        .check b {
+            color: var(--gold-bright);
+            font-size: 18px;
+            flex-shrink: 0;
+        }
+
+        .check b.cross {
+            color: #e76c6c;
+        }
+
+        /* Story / Quotes */
+        .story {
+            max-width: 820px;
+            margin: auto;
+        }
+
+        .story p {
+            font-size: 17px;
+            line-height: 1.85;
+            color: var(--ink);
+        }
+
+        .quote {
+            font: 500 24px/1.55 'Be Vietnam Pro', sans-serif;
+            border-radius: 16px;
+            background: linear-gradient(135deg, var(--gold-dark), #665011);
+            color: var(--white);
+            box-shadow: 0 0 55px rgba(201, 168, 76, 0.2), 0 16px 36px rgba(0, 0, 0, .35);
+            padding: 30px 34px;
+            margin: 38px 0;
+        }
+
+        /* Method (4 Pillars) */
+        .method {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+
+        .method-card {
+            padding: 32px 26px;
+            position: relative;
+            overflow: hidden;
+            background: rgba(255, 255, 255, 0.03);
+        }
+
+        .letter {
+            font: 700 44px 'Be Vietnam Pro', sans-serif;
+            background: linear-gradient(135deg, var(--gold-bright), var(--gold-dark));
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            position: relative;
+            z-index: 1;
+            margin-bottom: 12px;
+        }
+
+        .method-card h3 {
+            font-size: 18px;
+            letter-spacing: .02em;
+            color: var(--white);
+            margin-bottom: 12px;
+        }
+
+        .method-card p {
+            font-size: 14px;
+            line-height: 1.65;
+            color: var(--muted);
+            margin: 0;
+        }
+
+        /* About Section */
+        .about {
+            display: grid;
+            grid-template-columns: .75fr 1.25fr;
+            gap: 55px;
+            align-items: center;
+        }
+
+        .about h2 {
+            font: 600 42px/1.1 'Be Vietnam Pro', sans-serif;
+            margin-bottom: 24px;
+        }
+
+        .about p {
+            font-size: 16px;
+            line-height: 1.82;
+            color: var(--muted);
+            margin-bottom: 16px;
+        }
+
+        .signature {
+            font-weight: 700;
+            font-style: italic;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 32px;
+            color: var(--gold);
+            margin: 35px 0 0;
+        }
+
+        /* Timeline */
+        .timeline {
+            max-width: 860px;
+            margin: auto;
+            position: relative;
+            --progress: 0;
+        }
+
+        .timeline:before,
+        .timeline:after {
+            content: "";
+            position: absolute;
+            left: 35px;
+            top: 36px;
+            bottom: 72px;
+            width: 2px;
+            border-radius: 2px;
+            transform-origin: top;
+        }
+
+        .timeline:before {
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .timeline:after {
+            background: var(--gold-bright);
+            transform: scaleY(var(--progress));
+            transition: transform .18s linear;
+        }
+
+        .step {
+            display: grid;
+            grid-template-columns: 82px 1fr;
+            gap: 22px;
+            padding: 0 0 36px;
+            position: relative;
+        }
+
+        .num {
+            width: 70px;
+            height: 70px;
+            display: grid;
+            place-items: center;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+            color: #111;
+            font: 700 22px 'Be Vietnam Pro', sans-serif;
+            box-shadow: 0 0 26px rgba(201, 168, 76, 0.3);
+        }
+
+        .step h3 {
+            font: 600 24px 'Be Vietnam Pro', sans-serif;
+            margin: 6px 0 8px;
+            color: var(--white);
+        }
+
+        .step p {
+            color: var(--muted);
+            line-height: 1.7;
+            font-size: 15px;
+        }
+
+        /* Fit / Para quem é */
+        .fit {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+        }
+
+        .fit-box {
+            padding: 35px;
+            border-radius: 18px;
+        }
+
+        .fit-box.yes {
+            background: rgba(201, 168, 76, 0.1);
+            border: 1px solid rgba(201, 168, 76, 0.3);
+        }
+
+        .fit-box.no {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--border);
+        }
+
+        .fit h3 {
+            font: 600 28px 'Be Vietnam Pro', sans-serif;
+            margin-bottom: 24px;
+        }
+
+        .fit ul {
+            padding-left: 0;
+            margin: 0;
+            list-style: none;
+        }
+
+        .fit li {
+            display: grid;
+            grid-template-columns: 24px 1fr;
+            gap: 10px;
+            align-items: start;
+            margin: 14px 0;
+            font-size: 15px;
+            line-height: 1.6;
+        }
+
+        .fit-box.yes li:before {
+            content: "✅";
+        }
+
+        .fit-box.no li:before {
+            content: "❌";
+        }
+
+        /* Marquee */
+        .marquee-wrap {
+            background: linear-gradient(90deg, #7a5c10, #b8922a, #7a5c10);
+            padding: 18px 0;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+        }
+
+        .marquee {
+            display: flex;
+            white-space: nowrap;
+            animation: marquee 25s linear infinite;
+        }
+
+        .marquee span {
+            font-size: .85rem;
+            font-weight: 700;
+            letter-spacing: .15em;
+            text-transform: uppercase;
+            color: #fff;
+            padding-right: 40px;
+            opacity: .95;
+        }
+
+        @keyframes marquee {
+            0% {
+                transform: translateX(0);
+            }
+
+            100% {
+                transform: translateX(-50%);
+            }
+        }
+
+        /* Price */
+        .price {
+            max-width: 800px;
+            margin: auto;
+            padding: 50px;
+            text-align: center;
+            border-radius: 22px;
+            background: linear-gradient(180deg, rgba(201, 168, 76, 0.12), rgba(255, 255, 255, 0.02));
+            border: 1px solid rgba(201, 168, 76, 0.3);
+            box-shadow: 0 0 70px rgba(201, 168, 76, 0.15), 0 24px 65px rgba(0, 0, 0, .5);
+        }
+
+        .price h2 {
+            font: 600 38px/1.1 'Be Vietnam Pro', sans-serif;
+            margin-top: 14px;
+        }
+
+        .price .de {
+            color: var(--muted);
+            font-size: 1.1rem;
+            text-decoration: line-through;
+            margin-top: 24px;
+        }
+
+        .value {
+            font: 700 clamp(32px, 5vw, 48px) 'Be Vietnam Pro', sans-serif !important;
+            color: var(--gold-bright);
+            margin: 8px 0 12px;
+            background: linear-gradient(120deg, #fff, var(--gold-bright));
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .price .parcel {
+            font-size: 1.1rem;
+            color: var(--ink);
+            margin-bottom: 24px;
+        }
+
+        .price .policy {
+            margin-top: 24px;
+            font-size: 13px;
+            color: var(--muted);
+        }
+
+        /* Testimonials carousel */
+        .testimonials-carousel {
+            position: relative;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 54px 38px;
+        }
+
+        .testimonials-viewport {
+            overflow: hidden;
+            border: 1px solid rgba(201, 168, 76, .22);
+            border-radius: 18px;
+            background: rgba(255, 255, 255, .025);
+            box-shadow: 0 24px 60px rgba(0, 0, 0, .45);
+        }
+
+        .testimonials-track {
+            display: flex;
+            transition: transform .65s cubic-bezier(.22, .61, .36, 1);
+            will-change: transform;
+        }
+
+        .testimonial-slide {
+            flex: 0 0 100%;
+            display: grid;
+            place-items: center;
+            margin: 0;
+        }
+
+        .testimonial-slide img {
+            display: block;
+            width: 320px;
+            height: auto;
+        }
+
+        .carousel-arrow {
+            position: absolute;
+            top: calc(50% - 19px);
+            z-index: 2;
+            width: 42px;
+            height: 42px;
+            display: grid;
+            place-items: center;
+            padding: 0 0 4px;
+            border: 1px solid rgba(201, 168, 76, .35);
+            border-radius: 50%;
+            background: rgba(13, 17, 23, .9);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, .35);
+            color: var(--gold-bright);
+            cursor: pointer;
+            font: 400 31px/1 'Inter', sans-serif;
+            transition: background .2s ease, transform .2s ease;
+        }
+
+        .carousel-arrow:hover {
+            transform: scale(1.06);
+            background: rgba(201, 168, 76, .15);
+        }
+
+        .carousel-prev {
+            left: 0;
+        }
+
+        .carousel-next {
+            right: 0;
+        }
+
+        .carousel-dots {
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            display: flex;
+            gap: 9px;
+            translate: -50% 0;
+        }
+
+        .carousel-dots button {
+            width: 9px;
+            height: 9px;
+            padding: 0;
+            border: 0;
+            border-radius: 999px;
+            background: rgba(255, 255, 255, .24);
+            cursor: pointer;
+            transition: width .25s ease, background .25s ease;
+        }
+
+        .carousel-dots button.is-active {
+            width: 28px;
+            background: var(--gold-bright);
+        }
+
+        @media(prefers-reduced-motion: reduce) {
+            .testimonials-track {
+                transition: none;
+            }
+        }
+
+        /* FAQ */
+        .faq {
+            max-width: 860px;
+            margin: auto;
+        }
+
+        .faq details {
+            padding: 4px 24px;
+            margin-bottom: 12px;
+            border-radius: 12px;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--border);
+        }
+
+        .faq summary {
+            cursor: pointer;
+            list-style: none;
+            padding: 20px 0;
+            font-weight: 700;
+            font-size: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 18px;
+            color: var(--white);
+        }
+
+        .faq summary::-webkit-details-marker {
+            display: none;
+        }
+
+        .faq summary:after {
+            content: "↓";
+            display: grid;
+            place-items: center;
+            flex: 0 0 38px;
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+            color: #111;
+            font-size: 21px;
+            line-height: 1;
+            transition: transform .25s ease, background .25s ease;
+            box-shadow: 0 8px 18px rgba(201, 168, 76, 0.2);
+        }
+
+        .faq details[open] summary:after {
+            transform: rotate(180deg);
+            background: #332808;
+            color: var(--gold-bright);
+        }
+
+        .faq p {
+            color: var(--muted);
+            font-size: 15px;
+            line-height: 1.75;
+            margin: 0 0 21px;
+        }
+
+        /* Final */
+        .final {
+            padding: 110px 0;
+            text-align: center;
+            background: radial-gradient(900px 520px at 50% 0%, rgba(201, 168, 76, 0.1), transparent 62%), var(--dark);
+            color: var(--light);
+        }
+
+        .final h2 {
+            max-width: 780px;
+            margin: 0 auto 22px;
+            font: 600 clamp(36px, 5vw, 54px)/1.1 'Be Vietnam Pro', sans-serif;
+        }
+
+        .final p {
+            max-width: 650px;
+            margin: 0 auto 32px;
+            color: var(--muted);
+            line-height: 1.7;
+        }
+
+        /* Animations / Reveals */
+        .check,
+        .card,
+        .method-card,
+        .included div,
+        .fit-box,
+        .faq details,
+        .price {
+            transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease;
+        }
+
+        .js .reveal {
+            opacity: 0;
+            translate: 0 28px;
+            transition: opacity .65s ease var(--rd, 0s), translate .65s ease var(--rd, 0s), transform .25s ease, box-shadow .25s ease, border-color .25s ease;
+        }
+
+        .js .reveal.is-in {
+            opacity: 1;
+            translate: 0 0;
+        }
+
+        .check:hover,
+        .card:hover,
+        .method-card:hover,
+        .fit-box:hover,
+        .faq details:hover,
+        .price:hover {
+            transform: translateY(-5px);
+            border-color: rgba(201, 168, 76, 0.5);
+            box-shadow: 0 0 34px rgba(201, 168, 76, 0.2), 0 18px 40px rgba(0, 0, 0, .45);
+        }
+
+        @media(prefers-reduced-motion: reduce) {
+            .js .reveal {
+                opacity: 1;
+                translate: none;
+                transition: none;
+            }
+        }
+
+        /* Responsive */
+        @media(max-width: 900px) {
+
+            .hero-grid,
+            .about {
+                grid-template-columns: 1fr;
+            }
+
+            .photo,
+            .about-photo {
+                max-width: 600px;
+                margin: auto;
+            }
+
+            .method {
+                grid-template-columns: 1fr;
+            }
+
+            .hero {
+                padding-top: 48px;
+            }
+        }
+
+        @media(max-width: 620px) {
+            .wrap {
+                width: min(100% - 28px, 1120px);
+            }
+
+            .hero h1 {
+                font-size: clamp(36px, 10.5vw, 44px) !important;
+                line-height: 1.08 !important;
+                margin: 18px 0 20px;
+            }
+
+            .hero-grid {
+                gap: 42px;
+            }
+
+            .hero .lead {
+                font-size: 16px;
+                line-height: 1.6;
+            }
+
+            .section,
+            .dark {
+                padding: 74px 0;
+            }
+
+            .grid-2,
+            .fit,
+            .method {
+                grid-template-columns: 1fr;
+            }
+
+            .price {
+                padding: 38px 22px;
+            }
+
+            .step {
+                grid-template-columns: 58px 1fr;
+                gap: 14px;
+            }
+
+            .num {
+                width: 54px;
+                height: 54px;
+            }
+
+            .timeline:before,
+            .timeline:after {
+                left: 27px;
+                top: 28px;
+                bottom: 60px;
+            }
+
+            .about-photo:after {
+                inset: 16px -9px -12px 15px;
+            }
+
+            .quote {
+                padding: 24px 22px;
+                font-size: 21px;
+            }
+
+            .hero {
+                background: #0d1117 url('https://edersonporto.com/wp-content/uploads/2024/10/MOBILE-BG.png') no-repeat center top;
+                background-size: 100% auto;
+                min-height: auto;
+                align-items: flex-start;
+                padding: clamp(410px, 120vw, 570px) 0 64px;
+            }
+
+            .hero::after {
+                background: linear-gradient(180deg, transparent 0%, rgba(5, 7, 10, .08) 36%, rgba(5, 7, 10, .9) 58%, #0d1117 72%);
+            }
+
+            .hero-content>h1,
+            .hero-content>.lead {
+                max-width: none;
+            }
+
+            .hero .kicker {
+                font-size: 9px;
+                line-height: 1.35;
+                padding: 8px 13px;
+            }
+
+            .hero .cta {
+                width: 100%;
+            }
+
+            .testimonials-carousel {
+                padding: 0 0 36px;
+            }
+
+            .testimonials-viewport {
+                border-radius: 12px;
+            }
+
+            .carousel-arrow {
+                top: auto;
+                bottom: -5px;
+                width: 38px;
+                height: 38px;
+            }
+
+            .carousel-prev {
+                left: calc(50% - 104px);
+            }
+
+            .carousel-next {
+                right: calc(50% - 104px);
+            }
+
+            .carousel-dots {
+                bottom: 10px;
+            }
+        }
+
+        @media(max-width: 380px) {
+            .hero {
+                padding-top: 108vw;
+            }
+        }
+
+        /* Thank-you page */
+        .thank-you-body {
+            min-height: 100vh;
+            background:
+                linear-gradient(90deg, rgba(5, 7, 10, .96), rgba(5, 7, 10, .72) 55%, rgba(5, 7, 10, .35)),
+                #0d1117 url('https://edersonporto.com/wp-content/uploads/2024/10/TESTE-2.png') no-repeat center bottom / cover;
+        }
+
+        .thank-you-page {
+            min-height: 100vh;
+            display: grid;
+            place-items: center;
+            padding: 56px 20px;
+        }
+
+        .thank-you-card {
+            position: relative;
+            width: min(100%, 680px);
+            padding: 48px;
+            overflow: hidden;
+            border: 1px solid rgba(201, 168, 76, .28);
+            border-radius: 24px;
+            background: linear-gradient(145deg, rgba(20, 27, 38, .96), rgba(9, 13, 19, .94));
+            box-shadow: 0 30px 80px rgba(0, 0, 0, .58), 0 0 70px rgba(201, 168, 76, .1);
+            text-align: center;
+        }
+
+        .thank-you-card::before {
+            content: "";
+            position: absolute;
+            top: -160px;
+            left: 50%;
+            width: 360px;
+            height: 260px;
+            translate: -50% 0;
+            border-radius: 50%;
+            background: rgba(232, 201, 106, .14);
+            filter: blur(55px);
+            pointer-events: none;
+        }
+
+        .thank-you-brand {
+            position: relative;
+            color: var(--gold-bright);
+            font-size: 10px;
+            font-weight: 800;
+            letter-spacing: .2em;
+            text-transform: uppercase;
+        }
+
+        .thank-you-check {
+            position: relative;
+            width: 76px;
+            height: 76px;
+            display: grid;
+            place-items: center;
+            margin: 25px auto 20px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--gold-bright), var(--gold-dark));
+            box-shadow: 0 0 38px rgba(201, 168, 76, .3);
+        }
+
+        .thank-you-check svg {
+            width: 38px;
+            fill: none;
+            stroke: #101318;
+            stroke-width: 2.6;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
+        .thank-you-eyebrow {
+            margin-bottom: 12px;
+            color: var(--gold-bright);
+            font-size: 12px;
+            font-weight: 800;
+            letter-spacing: .16em;
+            text-transform: uppercase;
+        }
+
+        .thank-you-card h1 {
+            max-width: 560px;
+            margin: 0 auto 18px;
+            color: var(--white);
+            font-size: clamp(32px, 5vw, 45px);
+            line-height: 1.08;
+        }
+
+        .thank-you-intro {
+            max-width: 520px;
+            margin: 0 auto 30px;
+            color: var(--muted);
+            font-size: 17px;
+            line-height: 1.65;
+        }
+
+        .thank-you-next-step {
+            display: grid;
+            grid-template-columns: 46px 1fr;
+            gap: 16px;
+            align-items: start;
+            margin-bottom: 26px;
+            padding: 22px;
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            background: rgba(255, 255, 255, .035);
+            text-align: left;
+        }
+
+        .thank-you-step-number {
+            display: grid;
+            place-items: center;
+            width: 46px;
+            height: 46px;
+            border-radius: 50%;
+            background: rgba(201, 168, 76, .14);
+            color: var(--gold-bright);
+            font-weight: 800;
+        }
+
+        .thank-you-next-step strong {
+            display: block;
+            margin: 2px 0 7px;
+            color: var(--white);
+            font-family: 'Be Vietnam Pro', sans-serif;
+            font-size: 17px;
+        }
+
+        .thank-you-next-step p {
+            margin: 0;
+            color: var(--muted);
+            font-size: 14px;
+            line-height: 1.6;
+        }
+
+        .thank-you-cta {
+            width: 100%;
+            min-height: 62px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 11px;
+            padding: 16px 24px;
+            border-radius: 999px;
+            background: linear-gradient(135deg, #35dd70, #1fa855);
+            box-shadow: 0 14px 34px rgba(25, 170, 80, .24);
+            color: #07150c;
+            font-size: 15px;
+            font-weight: 800;
+            text-decoration: none;
+            transition: transform .2s ease, box-shadow .2s ease;
+        }
+
+        .thank-you-cta:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 18px 42px rgba(25, 170, 80, .36);
+        }
+
+        .thank-you-cta svg {
+            width: 23px;
+            fill: currentColor;
+        }
+
+        .thank-you-note {
+            margin: 16px 0 0;
+            color: #7e8998;
+            font-size: 12px;
+        }
+
+        @media(max-width: 620px) {
+            .thank-you-body {
+                background-position: 62% bottom;
+            }
+
+            .thank-you-page {
+                padding: 24px 14px;
+            }
+
+            .thank-you-card {
+                padding: 34px 20px 28px;
+                border-radius: 19px;
+            }
+
+            .thank-you-check {
+                width: 68px;
+                height: 68px;
+            }
+
+            .thank-you-intro {
+                font-size: 15px;
+            }
+
+            .thank-you-next-step {
+                grid-template-columns: 40px 1fr;
+                gap: 12px;
+                padding: 17px;
+            }
+
+            .thank-you-step-number {
+                width: 40px;
+                height: 40px;
+            }
+
+            .thank-you-cta {
+                font-size: 14px;
+            }
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <!-- HERO -->
+    <section class="hero">
+        <div class="wrap hero-content">
+            <div class="kicker">Clube do Advogado Tributarista</div>
+            <h1>Três meses para deixar de ser o tributarista que sabe muito e passar a ser o que o mercado procura.
+            </h1>
+            <p class="lead">O programa de implementação que reúne, em quatro pilares, tudo que separa o profissional
+                tecnicamente competente do profissional reconhecido, bem posicionado e preparado para o novo cenário
+                da reforma.</p>
+            <br>
+            <a class="cta" href="#checkout">Quero conhecer o Clube</a>
+        </div>
+    </section>
+
+    <!-- PROBLEM / CHECKS -->
+    <section class="section sand">
+        <div class="wrap">
+            <div class="section-title">
+                <div class="kicker" style="justify-content:center">Sua Realidade</div>
+                <h2>Você estudou anos para dominar a técnica. Ninguém te ensinou a transformar isso em carreira.</h2>
+            </div>
+            <div class="checks">
+                <div class="check reveal"><b>✓</b><span>Você conhece a matéria.</span></div>
+                <div class="check reveal"><b>✓</b><span>Acompanha o STF, entende de contencioso.</span></div>
+                <div class="check reveal"><b>✓</b><span>Sabe estruturar uma defesa.</span></div>
+                <div class="check reveal"
+                    style="background: rgba(255,255,255,0.01); border:none; padding-top: 10px; padding-bottom: 0;">
+                    <span style="color: var(--muted); font-size: 16px;">E, ainda assim, olha para colegas menos
+                        preparados, fechando mais clientes e cobrando mais, só porque aparecem mais e se posicionam
+                        melhor:</span>
+                </div>
+                <div class="check reveal"><b class="cross">✗</b><span>Você depende de indicação e nunca sabe de onde
+                        virá o próximo cliente.</span></div>
+                <div class="check reveal"><b class="cross">✗</b><span>Trava na hora de dizer o próprio valor e acaba
+                        cobrando abaixo do que o trabalho merece.</span></div>
+                <div class="check reveal"><b class="cross">✗</b><span>Sente que domina o assunto, mas que o mercado não
+                        enxerga isso na mesma proporção.</span></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- STORY / QUOTE -->
+    <section class="section">
+        <div class="wrap story">
+            <div class="kicker">A verdade sobre a carreira</div>
+            <h2 style="font:600 44px/1.1 'Be Vietnam Pro',sans-serif; margin:16px 0 28px; color: var(--white);">Existe
+                uma explicação para isso, e ela não passa por estudar ainda mais técnica.</h2>
+            <p>Quase todo advogado acredita na mesma equação: mais conhecimento técnico traz mais clientes e mais
+                dinheiro. É uma crença honesta, e é justamente ela o maior obstáculo da carreira.</p>
+            <p><strong>O que separa o tributarista requisitado do tributarista comum não é o quanto ele sabe.</strong> É
+                o quanto o mercado sabe que ele sabe, e o quanto ele consegue transformar conhecimento em valor
+                percebido pelo cliente.</p>
+
+            <div class="quote">Autoridade percebida vale mais que conhecimento acumulado.</div>
+
+            <p>Autoridade se constrói com método. <strong>E método é exatamente o que essa formação entrega, do
+                    posicionamento à execução técnica.</strong></p>
+            <br>
+            <a class="cta" href="#checkout">Quero construir essa autoridade</a>
+        </div>
+    </section>
+
+    <!-- METHOD / PILLARS -->
+    <section class="dark">
+        <div class="wrap">
+            <div class="section-title">
+                <div class="kicker" style="justify-content:center">A Imersão</div>
+                <h2>Os 4 Pilares do Clube do Advogado Tributarista</h2>
+                <p>O programa de implantação é organizado em quatro pilares, um por mês de formação, e cada um resolve
+                    uma dimensão específica da carreira. A sequência é intencional. São <strong>12 módulos ao longo de
+                        12 semanas,</strong> com entregáveis ao vivo práticos em cada etapa.</p>
+            </div>
+            <div class="method">
+                <div class="method-card reveal">
+                    <div class="letter">1</div>
+                    <h3>Autoridade e Negócio.</h3>
+                    <p>Como transformar conhecimento técnico em carreira reconhecida e remunerada. Advocacia como
+                        negócio, construção de autoridade técnica e digital, prospecção e honorários estratégicos.</p>
+                </div>
+                <div class="method-card reveal">
+                    <div class="letter">2</div>
+                    <h3>Método e Contencioso.</h3>
+                    <p>O arsenal técnico do tributarista. Processo administrativo fiscal, execução fiscal da CDA ao
+                        embargo com resultado, e instrumentos judiciais (mandado de segurança, ação declaratória e
+                        anulatória).</p>
+                </div>
+                <div class="method-card reveal">
+                    <div class="letter">3</div>
+                    <h3>Teses e Jurisprudência.</h3>
+                    <p>O ouro do tributarista: teses consolidadas, a Tese do Século e suas filhotes, e as próximas
+                        batalhas nas Cortes. Onde a discussão está quente e como se antecipar.</p>
+                </div>
+                <div class="method-card reveal">
+                    <div class="letter">4</div>
+                    <h3>Reforma e Futuro.</h3>
+                    <p>O tributarista da nova era: CBS, IBS, Imposto Seletivo e o mercado que está sendo criado agora.
+                        Impactos setoriais, oportunidades de consultivo e o papel da inteligência artificial.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TIMELINE -->
+    <section class="section sand">
+        <div class="wrap">
+            <div class="section-title">
+                <div class="kicker" style="justify-content:center">Cronograma</div>
+                <h2>Como os 03 meses se organizam.</h2>
+                <p>Os pilares se sobrepõem de propósito. Técnica e negócio caminham juntos desde a primeira semana.</p>
+            </div>
+            <div class="timeline" style="--progress: 0;">
+                <div class="step">
+                    <div class="num">01</div>
+                    <div>
+                        <h3>Mês 1: Fundação.</h3>
+                        <p>Pilar 1 completo e início do Pilar 2. Você começa estruturando o negócio e a autoridade
+                            enquanto entra no arsenal técnico do contencioso.</p>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="num">02</div>
+                    <div>
+                        <h3>Mês 2: Aprofundamento.</h3>
+                        <p>Conclusão do Pilar 2 e início do Pilar 3. O foco vira o domínio das teses e da jurisprudência
+                            que geram resultado.</p>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="num">03</div>
+                    <div>
+                        <h3>Mês 3: Síntese e Futuro.</h3>
+                        <p>Conclusão do Pilar 3 e Pilar 4 completo. Você fecha a formação preparado para atuar no
+                            cenário da reforma e com um plano de carreira nas mãos.</p>
+                    </div>
+                </div>
+            </div>
+            <p style="text-align:center; color:var(--muted); max-width:600px; margin: 40px auto 0;">Serão encontros ao
+                vivo, sendo no primeiro mês encontros semanais, no segundo e terceiro mês, encontros quinzenais.</p>
+        </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section class="section">
+        <div class="wrap about">
+            <div class="about-photo">
+                <img src="https://edersonporto.com/wp-content/uploads/2025/08/Group-1171279560.webp"
+                    alt="Éderson Porto">
+            </div>
+            <div>
+                <div class="kicker">Quem conduz a imersão</div>
+                <h2>Éderson Porto</h2>
+                <p>Advogado tributarista com mais de 20 anos de atuação no contencioso e no consultivo, sócio do
+                    escritório Porto, Ustárroz & Dall'Agnol. É a interseção rara entre a excelência acadêmica e a
+                    prática de mercado que o público jurídico raramente encontra reunida na mesma pessoa.</p>
+                <p>Doutor e Mestre em Direito pela UFRGS, Visiting Scholar na UC Berkeley School of Law, coordenador do
+                    LLM em Tributação da Empresa e des Negócios e professor do Mestrado Profissional em Direito na
+                    Unisinos.</p>
+                <p>Reconhecido pelo Best Lawyers em Direito Tributário (2022-2025). Autor do Manual da Execução Fiscal,
+                    do Manual Jurídico da Startup, e coautor de Teses Tributárias.</p>
+                <p>Boa parte do conteúdo da Imersão vem diretamente das obras e da atuação prática dele, o que garante
+                    que cada pilar seja sustentado por experiência real, e não por teoria de fora do mercado.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- MARQUEE -->
+    <div class="marquee-wrap">
+        <div class="marquee">
+            <span>+ AUTORIDADE + MÉTODO + TESES + POSICIONAMENTO + HONORÁRIOS + REFORMA + CARREIRA +</span>
+            <span>+ AUTORIDADE + MÉTODO + TESES + POSICIONAMENTO + HONORÁRIOS + REFORMA + CARREIRA +</span>
+            <span>+ AUTORIDADE + MÉTODO + TESES + POSICIONAMENTO + HONORÁRIOS + REFORMA + CARREIRA +</span>
+        </div>
+    </div>
+
+    <!-- FIT -->
+    <section class="section sand">
+        <div class="wrap">
+            <div class="section-title">
+                <h2>Transparência sobre a formação</h2>
+            </div>
+            <div class="fit">
+                <div class="fit-box yes reveal">
+                    <h3>Para quem é</h3>
+                    <ul>
+                        <li>Para o advogado tributarista em transição, que já tem competência técnica mas ainda não
+                            construiu posicionamento e cobra abaixo do que merece.</li>
+                        <li>Para o advogado generalista que enxerga na reforma a oportunidade de migrar para o
+                            tributário com base sólida.</li>
+                        <li>Para o profissional que quer chegar preparado ao novo cenário enquanto a maioria tenta
+                            entender o que muda.</li>
+                    </ul>
+                </div>
+                <div class="fit-box no reveal">
+                    <h3>Para quem NÃO É</h3>
+                    <ul>
+                        <li>Para quem busca fórmula de enriquecimento rápido sem investir em desenvolvimento técnico.
+                        </li>
+                        <li>Para o sócio sênior de grande escritório com carteira consolidada.</li>
+                        <li>Para quem não está disposto a agir, porque a formação entrega método, e método exige
+                            aplicação.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- QUOTE 2 -->
+    <section class="section">
+        <div class="wrap story">
+            <div class="quote" style="font-style:italic; font-size: 22px;">"Cada mês que passa sem posicionamento é um
+                mês cobrando abaixo do mercado, perdendo cliente para profissionais menos preparados tecnicamente, porém
+                melhor posicionados, e deixando passar teses já consolidadas que poderiam gerar resultado imediato."
+            </div>
+            <p class="signature" style="text-align: right;">— Éderson Porto</p>
+        </div>
+    </section>
+
+    <!-- PRICE -->
+    <section class="section sand" id="checkout">
+        <div class="wrap">
+            <div class="price reveal">
+                <div class="kicker" style="justify-content:center">Investimento</div>
+                <h2>Clube do Advogado Tributarista</h2>
+                <div class="de">De R$ 8.997</div>
+                <div class="value">Por R$ 2.997 à vista</div>
+                <div class="parcel">ou em até 12x de R$ 309,96</div>
+
+                <a class="cta" href="https://chk.eduzz.com/KW8Z32AR01"
+                    style="width: 100%; max-width: 400px; margin-top: 20px;">QUERO
+                    GARANTIR MINHA VAGA</a>
+
+                <div class="policy">Compra segura | Acesso à formação completa | Garantia de 7 dias</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TESTIMONIALS -->
+    <section class="section">
+        <div class="wrap">
+            <div class="section-title">
+                <div class="kicker" style="justify-content:center">Depoimentos</div>
+                <h2>O que profissionais da área estão falando do meu acompanhamento?</h2>
+            </div>
+            <div class="testimonials-carousel" aria-label="Depoimentos de alunos">
+                <div class="testimonials-viewport">
+                    <div class="testimonials-track">
+                        <article class="testimonial-slide">
+                            <img src="https://edersonporto.com/wp-content/uploads/2026/08/ChatGPT-Image-6-de-ago.-de-2026-18_53_50-e1786053562647.png"
+                                alt="Depoimento de aluno do Clube do Advogado Tributarista">
+                        </article>
+                        <article class="testimonial-slide">
+                            <img src="https://edersonporto.com/wp-content/uploads/2026/08/ChatGPT-Image-6-de-ago.-de-2026-18_53_50-2-e1786053819443.png"
+                                alt="Depoimento de aluno do Clube do Advogado Tributarista">
+                        </article>
+                        <article class="testimonial-slide">
+                            <img src="https://edersonporto.com/wp-content/uploads/2026/08/ChatGPT-Image-6-de-ago.-de-2026-18_53_50-1-e1786053702883.png"
+                                alt="Depoimento de aluno do Clube do Advogado Tributarista">
+                        </article>
+                    </div>
+                </div>
+                <button class="carousel-arrow carousel-prev" type="button" aria-label="Depoimento anterior">‹</button>
+                <button class="carousel-arrow carousel-next" type="button" aria-label="Próximo depoimento">›</button>
+                <div class="carousel-dots" aria-label="Escolher depoimento">
+                    <button class="is-active" type="button" aria-label="Mostrar depoimento 1"
+                        aria-current="true"></button>
+                    <button type="button" aria-label="Mostrar depoimento 2"></button>
+                    <button type="button" aria-label="Mostrar depoimento 3"></button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="section sand">
+        <div class="wrap">
+            <div class="section-title">
+                <h2>Perguntas frequentes</h2>
+            </div>
+            <div class="faq">
+                <details class="reveal">
+                    <summary>Preciso já atuar no tributário para acompanhar?</summary>
+                    <p>Não. O programa foi construído tanto para quem já atua e quer se posicionar melhor quanto para
+                        quem vem de outra área e quer entrar no tributário com base sólida. A sequência dos pilares
+                        parte da estrutura e avança até a execução técnica.</p>
+                </details>
+                <details class="reveal">
+                    <summary>Quanto tempo dura e qual o ritmo?</summary>
+                    <p>São três meses, distribuídos em 12 semanas e 12 módulos e 8 encontros ao vivo.</p>
+                </details>
+                <details class="reveal">
+                    <summary>O Clube do Advogado Tributarista promete quanto vou passar a faturar?</summary>
+                    <p>Não. Não trabalhamos com promessa de ganho específico. O que a formação entrega é método de
+                        posicionamento, domínio técnico e preparo para a reforma. O resultado depende da aplicação de
+                        cada um, e isso o programa deixa claro do início ao fim.</p>
+                </details>
+                <details class="reveal">
+                    <summary>Existe garantia?</summary>
+                    <p>Sim, você tem garantia de 7 dias. Se comprar e por algum motivo resolver cancelar, devolvemos o
+                        seu dinheiro sem questionamentos.</p>
+                </details>
+            </div>
+        </div>
+    </section>
+
+    <!-- FINAL -->
+    <section class="final">
+        <div class="wrap">
+            <h2>A nova arquitetura tributária já está em vigência. O momento de dominar é agora.</h2>
+            <p>Não fique operando no raso enquanto o mercado exige profundidade.</p>
+            <a class="cta" href="#checkout">QUERO O CLUBE DO ADVOGADO TRIBUTARISTA</a>
+        </div>
+    </section>
+
+    <script>
+        // Reveal animations script
+        document.documentElement.classList.add('js');
+
+        (function () {
+            var els = document.querySelectorAll('.check, .card, .method-card, .fit-box, .faq details, .price');
+            var groups = new Map();
+            els.forEach(function (el) {
+                var p = el.parentNode;
+                var i = groups.get(p) || 0;
+                groups.set(p, i + 1);
+                el.style.setProperty('--rd', (i * 0.15) + 's');
+                el.classList.add('reveal');
+            });
+
+            if (!('IntersectionObserver' in window)) {
+                els.forEach(function (el) { el.classList.add('is-in') });
+                return;
+            }
+
+            var obs = new IntersectionObserver(function (entries) {
+                entries.forEach(function (e) {
+                    if (e.isIntersecting) {
+                        e.target.classList.add('is-in');
+                        obs.unobserve(e.target);
+                    }
+                });
+            }, { threshold: 0.12, rootMargin: '0px 0px -6% 0px' });
+
+            els.forEach(function (el) { obs.observe(el) });
+        })();
+
+        // Timeline scroll effect
+        (function () {
+            var timeline = document.querySelector('.timeline');
+            if (!timeline) return;
+            var steps = Array.from(timeline.querySelectorAll('.step'));
+
+            function updateLine() {
+                var rect = timeline.getBoundingClientRect();
+                var start = window.innerHeight * 0.72;
+                var progress = Math.max(0, Math.min(1, (start - rect.top) / (rect.height - window.innerHeight * 0.22)));
+                timeline.style.setProperty('--progress', progress);
+            }
+
+            window.addEventListener('scroll', updateLine, { passive: true });
+            window.addEventListener('resize', updateLine);
+            updateLine();
+        })();
+
+        // Testimonials carousel
+        (function () {
+            var carousel = document.querySelector('.testimonials-carousel');
+            if (!carousel) return;
+
+            var track = carousel.querySelector('.testimonials-track');
+            var slides = Array.from(carousel.querySelectorAll('.testimonial-slide'));
+            var dots = Array.from(carousel.querySelectorAll('.carousel-dots button'));
+            var prev = carousel.querySelector('.carousel-prev');
+            var next = carousel.querySelector('.carousel-next');
+            var current = 0;
+            var timer;
+            var delay = 4500;
+
+            function showSlide(index) {
+                current = (index + slides.length) % slides.length;
+                track.style.transform = 'translateX(-' + (current * 100) + '%)';
+                dots.forEach(function (dot, i) {
+                    var active = i === current;
+                    dot.classList.toggle('is-active', active);
+                    if (active) dot.setAttribute('aria-current', 'true');
+                    else dot.removeAttribute('aria-current');
+                });
+            }
+
+            function stopAutoPlay() {
+                window.clearInterval(timer);
+            }
+
+            function startAutoPlay() {
+                stopAutoPlay();
+                if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+                timer = window.setInterval(function () { showSlide(current + 1); }, delay);
+            }
+
+            prev.addEventListener('click', function () { showSlide(current - 1); startAutoPlay(); });
+            next.addEventListener('click', function () { showSlide(current + 1); startAutoPlay(); });
+            dots.forEach(function (dot, i) {
+                dot.addEventListener('click', function () { showSlide(i); startAutoPlay(); });
+            });
+
+            carousel.addEventListener('mouseenter', stopAutoPlay);
+            carousel.addEventListener('mouseleave', startAutoPlay);
+            carousel.addEventListener('focusin', stopAutoPlay);
+            carousel.addEventListener('focusout', startAutoPlay);
+            document.addEventListener('visibilitychange', function () {
+                if (document.hidden) stopAutoPlay();
+                else startAutoPlay();
+            });
+
+            showSlide(0);
+            startAutoPlay();
+        })();
+    </script>
+
+</body>
+
+</html>
